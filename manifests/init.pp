@@ -37,7 +37,8 @@
 class redis (
   $version = $redis::params::version,
   $redis_src_dir = $redis::params::redis_src_dir,
-  $redis_bin_dir = $redis::params::redis_bin_dir
+  $redis_bin_dir = $redis::params::redis_bin_dir,
+  $redis_bind_address = $redis::params::redis_bind_address,
 ) inherits redis::params {
 
   include wget
