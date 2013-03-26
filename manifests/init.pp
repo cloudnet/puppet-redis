@@ -39,6 +39,7 @@ class redis (
   $redis_src_dir = $redis::params::redis_src_dir,
   $redis_bin_dir = $redis::params::redis_bin_dir,
   $redis_bind_address = $redis::params::redis_bind_address,
+  $redis_dir = $redis::params::redis_dir,
 ) inherits redis::params {
 
   include wget
@@ -48,7 +49,10 @@ class redis (
   $redis_pkg = "${redis_src_dir}/${redis_pkg_name}"
 
   # Install default instance
-  redis::instance { 'redis-default': }
+  redis::instance { 'redis-default':
+    redis_bind_address => $redis_bind_address,
+    redis_dir => $redis_dir,
+ }
 
   File {
     owner => root,
@@ -62,7 +66,7 @@ class redis (
   }
   file { 'redis-lib':
     ensure => directory,
-    path   => '/var/lib/redis',
+    path   => $redis_dir,
   }
 
   # If the version is 2.4.13, use the tarball that ships with the

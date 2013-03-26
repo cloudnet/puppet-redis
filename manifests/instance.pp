@@ -69,7 +69,8 @@ define redis::instance (
   $redis_databases = $redis::params::redis_databases,
   $redis_slowlog_log_slower_than = $redis::params::redis_slowlog_log_slower_than,
   $redis_slowlog_max_len = $redis::params::redis_slowlog_max_len,
-  $redis_password = $redis::params::redis_password
+  $redis_password = $redis::params::redis_password,
+  $redis_dir = $redis::params::redis_dir
   ) {
 
   # Using Exec as a dependency here to avoid dependency cyclying when doing
@@ -98,7 +99,7 @@ define redis::instance (
 
   file { "redis-lib-port-${redis_port}":
     ensure => directory,
-    path   => "/var/lib/redis/${redis_port}",
+    path   => "${redis_dir}/${redis_port}",
   }
 
   file { "redis-init-${redis_port}":
