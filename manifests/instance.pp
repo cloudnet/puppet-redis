@@ -62,6 +62,9 @@
 define redis::instance (
   $redis_port = $redis::params::redis_port,
   $redis_bind_address = $redis::params::redis_bind_address,
+  $redis_slave_read_only = $redis::params::redis_slave_read_only,
+  $redis_masterauth = $redis::params::redis_masterauth,
+  $redis_slaveof = $redis::params::redis_slaveof,
   $redis_max_memory = $redis::params::redis_max_memory,
   $redis_max_clients = $redis::params::redis_max_clients,
   $redis_timeout = $redis::params::redis_timeout,

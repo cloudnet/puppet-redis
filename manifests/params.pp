@@ -16,6 +16,9 @@ class redis::params {
 
   $redis_port = '6379'
   $redis_bind_address = false
+  $redis_slave_read_only = false
+  $redis_masterauth = false
+  $redis_slaveof = false
   $version = '2.4.13'
   $redis_src_dir = '/opt/redis-src'
   $redis_bin_dir = '/opt/redis'

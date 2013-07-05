@@ -39,6 +39,9 @@ class redis (
   $redis_src_dir = $redis::params::redis_src_dir,
   $redis_bin_dir = $redis::params::redis_bin_dir,
   $redis_bind_address = $redis::params::redis_bind_address,
+  $redis_slave_read_only = $redis::params::redis_slave_read_only,
+  $redis_masterauth = $redis::params::redis_masterauth,
+  $redis_slaveof = $redis::params::redis_slaveof,
   $redis_dir = $redis::params::redis_dir,
 ) inherits redis::params {
 
@@ -51,6 +54,9 @@ class redis (
   # Install default instance
   redis::instance { 'redis-default':
     redis_bind_address => $redis_bind_address,
+    redis_slave_read_only => $redis_slave_read_only,
+    redis_masterauth => $redis_masterauth,
+    redis_slaveof => $redis_slaveof,
     redis_dir => $redis_dir,
  }
 
